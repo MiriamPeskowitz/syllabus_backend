@@ -2,7 +2,13 @@ class Api::V1::SylabusesController < ApplicationController
 
 	def index
 		sylabuses = Sylabus.all
-		render json: sylabuses
+		# render json: sylabuses
+		# options = {
+		# 	include: [:category]
+		# 	# 	include: [:category, :users]
+		# }
+		# render json: SylabusSerializer.new(sylabuses, options)
+		render json: SylabusSerializer.new(sylabuses)
 	end
 
 	def create
