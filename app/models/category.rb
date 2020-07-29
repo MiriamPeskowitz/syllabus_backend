@@ -1,3 +1,3 @@
 class Category < ApplicationRecord
-	has_many :sylabuses
+	has_many :sylabuses, dependent: :destroy
 end
