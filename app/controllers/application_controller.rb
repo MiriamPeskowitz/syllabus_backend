@@ -18,7 +18,7 @@ class ApplicationController < ActionController::API
 			token= auth_header.split(' ')[1]
 			begin
 				JWT.decode(token, secret@@@, true, jwtalgorithm 'HS256')
-			rescue JWT:DecodeError
+			rescue JWT::DecodeError
 				nil
 			end
 		end
