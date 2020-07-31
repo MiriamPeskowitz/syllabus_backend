@@ -7,15 +7,15 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #MVP seed data 
-User.destroy_all
-Category.destroy_all
-Syllabus.destroy_all
-Concentration.destroy_all
-ConcentrationKeyword.destroy_all
-Keyword.destroy_all
+User.delete_all
+Category.delete_all
+Sylabus.delete_all
+Concentration.delete_all
+ConcentrationKeyword.delete_all
+Keyword.delete_all
 
 mir = User.create!(name: "mir", email: "mir@mail.com", password: "pw", image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Scifresh_%28Apple%29.jpg", bio: "teacher author coder")
-walt = User.create!(name => "walt", email => "walt@mail.com", password => "pw", image_url => "https://www.petsworld.in/blog/wp-content/uploads/2014/09/Pitbull-dog-image.jpg", bio => "friend to all dogs")
+walt = User.create!(:name => "walt", :email => "walt@mail.com", :password => "pw", :image_url => "https://www.petsworld.in/blog/wp-content/uploads/2014/09/Pitbull-dog-image.jpg", :bio => "friend to all dogs")
 
 art = Category.create!(name: "Art")
 tech = Category.create!(name: "Tech")
