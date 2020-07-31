@@ -5,19 +5,20 @@ class ApplicationController < ActionController::API
 
 # first encode
 	def encode_token(payload)
-		JWT.encode(payload, secret@@@)
+		JWT.encode(payload, 'secretttt' )
 	end 
 
 	def auth_header
 		request.headers['Authorization']
 	end 
+	# this is usd because we'll put the jwt token in the header, in Authorization 
 
 #then decode it on the front end for the user 
 	def decode_token
 		if auth_header
 			token= auth_header.split(' ')[1]
 			begin
-				JWT.decode(token, secret@@@, true, jwtalgorithm 'HS256')
+				JWT.decode(token, 'secretttt', true, algorithm: 'HS256')
 			rescue JWT::DecodeError
 				nil
 			end
