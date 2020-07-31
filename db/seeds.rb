@@ -7,14 +7,21 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #MVP seed data 
-Category.destroy_all
-Sylabus.destroy_all
+User.delete_all
+Category.delete_all
+Sylabus.delete_all
+Concentration.delete_all
+ConcentrationKeyword.delete_all
+Keyword.delete_all
+
+mir = User.create!(name: "mir", email: "mir@mail.com", password: "pw", image_url: "https://upload.wikimedia.org/wikipedia/commons/c/cb/Scifresh_%28Apple%29.jpg", bio: "teacher author coder")
+walt = User.create!(:name => "walt", :email => "walt@mail.com", :password => "pw", :image_url => "https://www.petsworld.in/blog/wp-content/uploads/2014/09/Pitbull-dog-image.jpg", :bio => "friend to all dogs")
 
 art = Category.create!(name: "Art")
 tech = Category.create!(name: "Tech")
 science = Category.create!(name: "Science")
 
-WAAH_sylabus = Sylabus.create!(title: "West African Art History", description: "West African cultures developed bronze casting for reliefs, like the famous Benin Bronzes, to decorate palaces and for highly naturalistic royal heads from around the Bini town of Benin City, Edo State, as well as in terracotta or metal, from the 12th–14th centuries. Akan goldweights are a form of small metal sculptures produced over the period 1400–1900; some apparently represent proverbs, contributing a narrative element rare in African sculpture; and royal regalia included impressive gold sculptured elements.[8] Many West African figures are used in religious rituals and are often coated with materials placed on them for ceremonial offerings. The Mande-speaking peoples of the same region make pieces from wood with broad, flat surfaces and arms and legs shaped like cylinders. In Central Africa, however, the main distinguishing characteristics include heart-shaped faces that are curved inward and display patterns of circles and dots.", image_url: "https://upload.wikimedia.org/wikipedia/commons/9/97/AdinkraCalabashStamps.jpg", category_id: art.id)
+WAAH_sylabus = Sylabus.create!(title: "West African Art History", description: "West African cultures developed bronze casting for reliefs, like the famous Benin Bronzes, to decorate palaces and for highly naturalistic royal heads from around the Bini town of Benin City, Edo State, as well as in terracotta or metal, from the 12th–14th centuries. Akan goldweights are a form of small metal sculptures produced over the period 1400–1900; some apparently represent proverbs, contributing a narrative element rare in African sculpture; and royal regalia included impressive gold sculptured elements.[8] Many West African figures are used in religious rituals and are often coated with materials placed on them for ceremonial offerings. The Mande-speaking peoples of the same region make pieces from wood with broad, flat surfaces and arms and legs shaped like cylinders. In Central Africa, however, the main distinguishing characteristics include heart-shaped faces that are curved inward and display patterns of circles and dots.", image_url: "https://upload.wikimedia.org/wikipedia/commons/9/97/AdinkraCalabashStamps.jpg", category_id: art.id, user_id: walt.id)
 
 #Concentrations
 imagination = Concentration.create!(title: "Imagination", description: "Whenever one’s focus is liberation, the imagination must act as a core component. To tell the future one must engage their memory and imagination.", sylabus_id: WAAH_sylabus.id)
