@@ -1,10 +1,17 @@
 class Api::V1::AuthController < ApplicationController
 	skip_before_action :authorized, only: [:create]
 	
+	def profile
+		#use current_user helper in AC
+		render json: {
+			user: UserSerializer.new(current_user)
+		}, status: :accepted 
+	end
+
 	# find user by email, using user login params (not user params from the DB) 
 	def create
-		@user = User.find_by(email: user_login_params[:email])
-		if @user && @user.authenticate(user_login_params)[:password]
+		@user = User.find_by(email: user_login_params[:email] )
+		if @user && @user.authenticate(user_login_params[:password])
 			# db has password_digest, will compare that, through bcrypt, with ulp password
 			token = encode_token( {user_id: @user.id} )
 			# similar to how we used to give someone a session or cookie
